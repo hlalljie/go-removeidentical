@@ -14,8 +14,9 @@ func main() {
 		"violets", "are", "blue",
 		"blue", "sugar", "is", "sweet",
 		"and", "so", "are", "you", "you"}
+	// go let's other functions run concurrently
 	go p.ReadWords(c0, words)
 	go p.RemoveIdentical(c0, c1)
-	// c1 being sent downstream activates printWords
+	// print does not allow concurrency to block the main function from ending
 	p.PrintWords(c1)
 }
